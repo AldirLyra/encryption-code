@@ -3,31 +3,28 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        final SecureEncryption secureEncryption = new SecureEncryption();
 
-        final Encriptacao encriptacao = new Encriptacao();
-        final Decriptacao decriptacao = new Decriptacao();
         final Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite a frase que deseja encriptar: ");
-        String textoParaEncriptar = sc.nextLine();
+        System.out.println("Digite a frase que deseja criptografar:");
+        final String frase = sc.nextLine();
 
-        System.out.println("Este é o seu texto encriptado: ");
-        System.out.println(encriptacao.encriptarTexto(textoParaEncriptar));
+        final String fraseCriptografada = secureEncryption.encriptarTexto(frase);
+        System.out.println("Frase criptografada: " + fraseCriptografada);
 
-        System.out.println("Deseja realizar a decriptação ? ");
+        System.out.println("Deseja descriptografar a frase ?");
         System.out.println("(1) - SIM");
         System.out.println("(2) - NÃO");
 
-        final Integer resposta = sc.nextInt();
-        final String textoDecriptado = encriptacao.encriptarTexto(textoParaEncriptar);
+        final Integer opcao = sc.nextInt();
+        final String fraseDescriptografada = secureEncryption.decriptarTexto(fraseCriptografada);
 
-        if(resposta == 1){
-            System.out.println("Este é o seu texto decriptado: ");
-            System.out.println(decriptacao.decriptarTexto(textoDecriptado));
+        if (opcao == 1) {
+            System.out.println("Frase descriptografada: " + fraseDescriptografada);
 
-        } else if (resposta == 2){
-            System.out.println("Boa sorte para decriptar a mensagem...");
+        } else if (opcao == 2) {
+            System.out.println("Boa sorte para descriptografar a frase :)");
         }
-
     }
 }
